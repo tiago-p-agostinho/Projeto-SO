@@ -1,0 +1,14 @@
+#ifndef HASHTABLE_H
+#define HASHTABLE_H 1
+
+typedef struct node {
+	KV_t pair;
+	struct node *next;
+}node;
+  
+typedef struct hashtable {
+	node **table;	
+}hashtable;
+
+hashtable *ht_create(int size);
+#endif

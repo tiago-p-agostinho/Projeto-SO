@@ -1,0 +1,20 @@
+#ifndef KOS_SHARD_H
+#define KOS_SHARD_H 1
+
+#define HT_SIZE 10
+#define KV_SIZE 20
+
+typedef struct node {
+	KV_t pair;
+	struct node *next;
+}node;
+  
+typedef struct hashtable {
+	int size;
+	node **table;	
+}hashtable;
+
+extern hashtable **kos_shards; /* kos */
+
+hashtable **kos_shard_init(int num_server_threads, int num_shards);
+#endif 

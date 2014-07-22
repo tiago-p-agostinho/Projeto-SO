@@ -1,0 +1,11 @@
+string token
+
+char *token;
+char *cmd= "copy a.txt"
+
+token=strtok(cmd, " \n")
+
+while (token!=NULL){
+	printf("%s\n", token);
+	token=strtok (NULL, " \n");
+}

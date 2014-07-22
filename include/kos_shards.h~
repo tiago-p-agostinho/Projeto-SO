@@ -1,0 +1,26 @@
+#ifndef KOS_SHARD_H
+#define KOS_SHARD_H 1
+
+#include <kos_client.h>
+
+#define HT_SIZE 10
+#define KV_SIZE 20
+
+
+
+typedef struct node {
+	KV_t pair;
+	struct node *next;
+}node;
+  
+typedef struct hashtable {
+	node *table[HT_SIZE];	
+}hashtable;
+
+void  kos_shard_init(int num_server_threads, int num_shards);
+char* kos_gets(int shardId, char* key);
+char* kos_puts(int shardId, char* key, char* value);
+char* kos_removes(int shardId, char* key);
+KV_t* kos_all_keys(int clientid, int shardId, int* dim);
+
+#endif 

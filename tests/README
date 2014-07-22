@@ -1,0 +1,67 @@
+You can use the "doAllTests.sh" script to exectute all the tests.
+
+Below you find a brief description of each test case.
+
+###########
+T.1 - test_kos_single_threaded_put_get:
+
+Populates KOS with NUM_EL keys per each shard, then checks with get if the keys are present.
+Uses a single thread.
+
+###########
+T.2 - test_kos_single_threaded_put_remove_get
+
+Populates KOS with NUM_EL keys per each shard, then removes in each shard all keys from NUM_EL/2 to NUM_EL-1, then inspects the state of KOS using get.
+Uses a single thread.
+
+###########
+T.3 - test_kos_single_threaded_put_get_put_get
+
+Populates KOS with NUM_EL keys per each shard, then checks if keys are present. Next it updates in each shard all keys from NUM_EL/2 to NUM_EL-1. Finally it inspects the state of KOS using get.
+Uses a single thread.
+
+###########
+T.4 - test_kos_single_threaded_put_get_remove_put_get
+
+Populates KOS with NUM_EL keys per each shard, then checks if keys are present. Next it removes in each shard all keys from NUM_EL/2 to NUM_EL-1. Next it updates in each shard all keys. Finally it inspects the state of KOS using get.
+Uses a single thread.
+
+###########
+T.5 - test_kos_single_threaded_put_dump
+
+Populates KOS with NUM_EL keys per each shard, then checks with getAllKeys if the keys are present.
+Uses a single thread.
+
+###########
+T.6 - test_kos_single_threaded_put_get_remove_put_dump
+
+Populates KOS with NUM_EL keys per each shard, then removes in each shard all keys from NUM_EL/2 to NUM_EL-1, then inspects the state of KOS using getAllKeys.
+Uses a single thread.
+
+###########
+T.7 - test_kos_multi_threaded_put_get
+
+Populates KOS with NUM_EL keys per each shard, then checks with get if the keys are present.
+Uses 10 client and 10 server threads. All threads operate on disjoint key/value sets. 
+
+###########
+T.8 - test_kos_multi_threaded_put_get_remove_get
+
+Populates KOS with NUM_EL keys per each shard, then removes in each shard all keys from NUM_EL/2 to NUM_EL-1, then inspects the state of KOS using get.
+Uses 10 client and 10 server threads. All threads operate on disjoint key/value sets. 
+
+###########
+T.9 - test_kos_multi_threaded_all
+
+Populates KOS with NUM_EL keys per each shard, then checks if keys are present. Next it removes in each shard all keys from NUM_EL/2 to NUM_EL-1. Next it updates in each shard all keys. Finally it inspects the state of KOS using get.
+Uses 10 client and 10 server threads. All threads operate on disjoint key/value sets. 
+
+###########
+T.10 - test_kos_multi_threaded_all_getAll
+
+Analogous to the above one but also includes getAllKeys.
+
+###########
+T.11 - test_kos_multi_threaded_all_shared
+
+Analogous to test_kos_multi_threaded_all but in this case all threads operate on the same set of keys and values. As the interleaving of accesses is non-deterministic, this test does not check the actual value returned by the operations, and is considered passed if it reaches the end of the execution.
